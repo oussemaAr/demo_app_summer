@@ -35,33 +35,16 @@ class MissionPage extends StatelessWidget {
         ),
         body: Column(
           children: [
-            missionWidget(),
-            missionWidget(),
-            missionWidget(),
+            ListTile(
+              leading: Image.asset(
+                "images/image_two.png",
+                width: 68,
+                height: 68,
+              ),
+              title: Text("Mission"),
+              subtitle: Text("12/12/12"),
+            )
           ],
         ));
-  }
-
-  missionWidget() {
-    return Row(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            left: 16,
-          ),
-          child: Image.asset(
-            "images/image_two.png",
-            width: 68,
-            height: 68,
-          ),
-        ),
-        Column(
-          children: [
-            Text("Mission"),
-            Text("12/12/12"),
-          ],
-        )
-      ],
-    );
   }
 }
