@@ -13,7 +13,6 @@ class FetchLaunchesUseCase {
 
     if (result != null) {
       final data = result.map((element) {
-        print("DATA IS ${element?.failures?.firstOrNull?.reason}");
         return LaunchesDomainModel(
           name: element?.name ?? "",
           launchesData: element?.dateUnix?.convertToReadbleTime() ?? "",

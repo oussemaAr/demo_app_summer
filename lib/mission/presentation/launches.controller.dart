@@ -7,12 +7,14 @@ class LaunchesContoller extends GetxController {
   final FetchLaunchesUseCase _useCase;
 
   var launchesList = <LaunchesPresentationModel>[].obs;
+  var isLoading = true.obs;
 
   LaunchesContoller({required FetchLaunchesUseCase useCase})
       : _useCase = useCase;
 
   fetchLaunches() {
     _useCase.fetchLaunches().then((data) {
+      isLoading.value = false;
       if (data != null) {
         final result = data
             .map(
