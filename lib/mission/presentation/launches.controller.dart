@@ -30,8 +30,6 @@ class LaunchesContoller extends GetxController {
 
         launchesList.value = result;
       }
-    }).catchError((error) {
-      print("IS ERROR $error");
-    });
+    }).catchError((error) {});
   }
 }
