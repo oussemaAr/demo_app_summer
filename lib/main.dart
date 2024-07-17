@@ -1,3 +1,4 @@
+import 'package:demo_app/mission/mission.page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,33 +19,5 @@ class MainApp extends StatelessWidget {
       ),
       home: MissionPage(),
     );
-  }
-}
-
-class MissionPage extends StatelessWidget {
-  const MissionPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("SpaceX App"),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-        ),
-        body: Column(
-          children: [
-            ListTile(
-              leading: Image.asset(
-                "images/image_two.png",
-                width: 68,
-                height: 68,
-              ),
-              title: Text("Mission"),
-              subtitle: Text("12/12/12"),
-            )
-          ],
-        ));
   }
 }
