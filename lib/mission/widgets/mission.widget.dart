@@ -1,8 +1,9 @@
 import 'package:demo_app/mission/model/mission.model.dart';
+import 'package:demo_app/mission/presentation/launches_presentation.model.dart';
 import 'package:flutter/material.dart';
 
 missionWidget({
-  required MissionModel currentMission,
+  required LaunchesPresentationModel currentMission,
   Function? onMissionClicked,
 }) {
   return InkWell(
@@ -11,15 +12,14 @@ missionWidget({
     },
     child: Card(
       child: ListTile(
-        leading: Image.asset(
-          currentMission.missionImageUrl,
+        leading: Image.network(
+          currentMission.launchImage,
           width: 68,
           height: 68,
         ),
-        title: Text(currentMission.missionName),
-        subtitle: Text(currentMission.missionDate),
-        trailing:
-            currentMission.isSuccess ? Icon(Icons.done) : Icon(Icons.error),
+        title: Text(currentMission.name),
+        subtitle: Text(currentMission.launchesData),
+        trailing: currentMission.status ? Icon(Icons.done) : Icon(Icons.error),
       ),
     ),
   );

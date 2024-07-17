@@ -1,8 +1,7 @@
-import 'package:demo_app/mission/mission_details.page.dart';
-import 'package:demo_app/mission/model/mission.model.dart';
+import 'package:demo_app/mission/presentation/launches.controller.dart';
 import 'package:demo_app/mission/widgets/mission.widget.dart';
-import 'package:demo_app/mock/mission.mock.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class MissionPage extends StatefulWidget {
   const MissionPage({super.key});
@@ -14,43 +13,22 @@ class MissionPage extends StatefulWidget {
 class _MissionPageState extends State<MissionPage> {
   @override
   Widget build(BuildContext context) {
+    var contoller = Get.find<LaunchesContoller>();
+    contoller.fetchLaunches();
     return Scaffold(
-      appBar: AppBar(
-        title: Text("SpaceX App"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            mockMissions.add(
-              MissionModel(
-                missionDate: "missionDate",
-                missionImageUrl: "images/image_one.png",
-                missionName: "missionName",
-                isSuccess: true,
-              ),
-            );
-          });
-        },
-      ),
-      body: ListView.builder(
-        itemCount: mockMissions.length,
-        itemBuilder: (context, index) {
-          final currentMission = mockMissions[index];
-          return missionWidget(
-            currentMission: currentMission,
-            onMissionClicked: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => MissionDetails(
-                    currentMission: currentMission,
-                  ),
-                ),
+        appBar: AppBar(
+          title: Text("SpaceX App"),
+        ),
+        body: Obx(
+          () => ListView.builder(
+            itemCount: contoller.launchesList.length,
+            itemBuilder: (context, index) {
+              final currentMission = contoller.launchesList[index];
+              return missionWidget(
+                currentMission: currentMission,
               );
             },
-          );
-        },
-      ),
-    );
+          ),
+        ));
   }
 }
