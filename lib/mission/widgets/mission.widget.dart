@@ -1,4 +1,3 @@
-import 'package:demo_app/mission/model/mission.model.dart';
 import 'package:demo_app/mission/presentation/launches_presentation.model.dart';
 import 'package:flutter/material.dart';
 
