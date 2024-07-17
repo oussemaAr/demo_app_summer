@@ -1,10 +1,16 @@
 import 'package:demo_app/mission/model/mission.model.dart';
 import 'package:demo_app/mission/widgets/mission.widget.dart';
+import 'package:demo_app/mock/mission.mock.dart';
 import 'package:flutter/material.dart';
 
-class MissionPage extends StatelessWidget {
+class MissionPage extends StatefulWidget {
   const MissionPage({super.key});
 
+  @override
+  State<MissionPage> createState() => _MissionPageState();
+}
+
+class _MissionPageState extends State<MissionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,20 +18,24 @@ class MissionPage extends StatelessWidget {
         title: Text("SpaceX App"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            mockMissions.add(
+              MissionModel(
+                missionDate: "missionDate",
+                missionImageUrl: "images/image_one.png",
+                missionName: "missionName",
+                isSuccess: true,
+              ),
+            );
+          });
+        },
       ),
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: mockMissions.length,
         itemBuilder: (context, index) {
           return missionWidget(
-            currentMission: MissionModel(
-              missionDate: "12/06/2024",
-              missionImageUrl: index % 2 == 0
-                  ? "images/image_one.png"
-                  : "images/image_two.png",
-              missionName: "Mission $index",
-              isSuccess: true,
-            ),
+            currentMission: mockMissions[index],
           );
         },
       ),
