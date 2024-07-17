@@ -16,7 +16,9 @@ class MissionPage extends StatelessWidget {
         ),
         body: Obx(
           () => contoller.isLoading.value == true
-              ? CircularProgressIndicator()
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
               : ListView.builder(
                   itemCount: contoller.launchesList.length,
                   itemBuilder: (context, index) {
