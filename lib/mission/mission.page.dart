@@ -1,3 +1,4 @@
+import 'package:demo_app/mission/mission_details.page.dart';
 import 'package:demo_app/mission/model/mission.model.dart';
 import 'package:demo_app/mission/widgets/mission.widget.dart';
 import 'package:demo_app/mock/mission.mock.dart';
@@ -34,8 +35,19 @@ class _MissionPageState extends State<MissionPage> {
       body: ListView.builder(
         itemCount: mockMissions.length,
         itemBuilder: (context, index) {
+          final currentMission = mockMissions[index];
           return missionWidget(
-            currentMission: mockMissions[index],
+            currentMission: currentMission,
+            onMissionClicked: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => MissionDetails(
+                    currentMission: currentMission,
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
